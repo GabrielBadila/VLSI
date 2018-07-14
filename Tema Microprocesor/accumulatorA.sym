@@ -1,0 +1,60 @@
+USER SYMBOL by DSCH 3.5
+DATE 5/10/2018 6:51:26 PM
+SYM  #accumulatorA
+BB(0,0,40,90)
+TITLE 10 -7  #accumulatorA
+MODEL 6000
+REC(5,5,30,80)
+PIN(0,10,0.00,0.00)MainClock
+PIN(0,20,0.00,0.00)LatchA
+PIN(0,40,0.00,0.00)ClearA
+PIN(0,80,0.00,0.00)A0
+PIN(0,70,0.00,0.00)A1
+PIN(0,60,0.00,0.00)A2
+PIN(0,50,0.00,0.00)A3
+PIN(0,30,0.00,0.00)EnableA
+PIN(40,80,2.00,1.00)AluA0
+PIN(40,70,2.00,1.00)AluA1
+PIN(40,60,2.00,1.00)AluA2
+PIN(40,50,2.00,1.00)AluA3
+PIN(40,40,2.00,1.00)IB0
+PIN(40,30,2.00,1.00)IB1
+PIN(40,20,2.00,1.00)IB2
+PIN(40,10,2.00,1.00)IB3
+LIG(0,10,5,10)
+LIG(0,20,5,20)
+LIG(0,40,5,40)
+LIG(0,80,5,80)
+LIG(0,70,5,70)
+LIG(0,60,5,60)
+LIG(0,50,5,50)
+LIG(0,30,5,30)
+LIG(35,80,40,80)
+LIG(35,70,40,70)
+LIG(35,60,40,60)
+LIG(35,50,40,50)
+LIG(35,40,40,40)
+LIG(35,30,40,30)
+LIG(35,20,40,20)
+LIG(35,10,40,10)
+LIG(5,5,5,85)
+LIG(5,5,35,5)
+LIG(35,5,35,85)
+LIG(35,85,5,85)
+VLG module accumulatorA( MainClock,LatchA,ClearA,A0,A1,A2,A3,EnableA,
+VLG  AluA0,AluA1,AluA2,AluA3,IB0,IB1,IB2,IB3);
+VLG  input MainClock,LatchA,ClearA,A0,A1,A2,A3,EnableA;
+VLG  output AluA0,AluA1,AluA2,AluA3,IB0,IB1,IB2,IB3;
+VLG  wire w6,w7,w9,w12,w16,w18,;
+VLG  dreg #(24) dreg_1(AluA0,w9,A0,w6,w7);
+VLG  dreg #(24) dreg_2(AluA3,w12,A3,w6,w7);
+VLG  and #(19) and2_3(w7,MainClock,LatchA);
+VLG  dreg #(24) dreg_4(AluA2,w16,A2,w6,w7);
+VLG  dreg #(24) dreg_5(AluA1,w18,A1,w6,w7);
+VLG  notif1 #(6) notif1_6(IB0,w9,EnableA);
+VLG  notif1 #(6) notif1_7(IB1,w18,EnableA);
+VLG  notif1 #(6) notif1_8(IB3,w12,EnableA);
+VLG  notif1 #(6) notif1_9(IB2,w16,EnableA);
+VLG  not #(7) inv_10(w6,ClearA);
+VLG endmodule
+FSYM

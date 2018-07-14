@@ -1,0 +1,136 @@
+USER SYMBOL by DSCH 3.5
+DATE 5/10/2018 7:53:26 PM
+SYM  #regAregBAluInOut
+BB(0,0,40,220)
+TITLE 10 -7  #regAregBAluInOut
+MODEL 6000
+REC(5,5,30,210)
+PIN(0,210,0.00,0.00)A0
+PIN(0,200,0.00,0.00)A1
+PIN(0,190,0.00,0.00)A2
+PIN(0,180,0.00,0.00)A3
+PIN(0,70,0.00,0.00)EnableAlu
+PIN(0,170,0.00,0.00)AddSub
+PIN(0,20,0.00,0.00)LatchB
+PIN(0,160,0.00,0.00)B0
+PIN(0,150,0.00,0.00)B1
+PIN(0,140,0.00,0.00)B2
+PIN(0,130,0.00,0.00)B3
+PIN(0,30,0.00,0.00)LatchA
+PIN(0,80,0.00,0.00)EnableA
+PIN(0,10,0.00,0.00)MainClock
+PIN(0,40,0.00,0.00)invMainReset
+PIN(0,60,0.00,0.00)EnableIn
+PIN(0,120,0.00,0.00)DataIn0
+PIN(0,110,0.00,0.00)DataIn1
+PIN(0,100,0.00,0.00)DataIn2
+PIN(0,90,0.00,0.00)DataIn3
+PIN(0,50,0.00,0.00)EnableOut
+PIN(40,10,2.00,1.00)IB3
+PIN(40,20,2.00,1.00)IB2
+PIN(40,30,2.00,1.00)IB1
+PIN(40,40,2.00,1.00)IB0
+PIN(40,50,2.00,1.00)DataOut3
+PIN(40,60,2.00,1.00)DataOut2
+PIN(40,70,2.00,1.00)DataOut1
+PIN(40,80,2.00,1.00)DataOut0
+LIG(0,210,5,210)
+LIG(0,200,5,200)
+LIG(0,190,5,190)
+LIG(0,180,5,180)
+LIG(0,70,5,70)
+LIG(0,170,5,170)
+LIG(0,20,5,20)
+LIG(0,160,5,160)
+LIG(0,150,5,150)
+LIG(0,140,5,140)
+LIG(0,130,5,130)
+LIG(0,30,5,30)
+LIG(0,80,5,80)
+LIG(0,10,5,10)
+LIG(0,40,5,40)
+LIG(0,60,5,60)
+LIG(0,120,5,120)
+LIG(0,110,5,110)
+LIG(0,100,5,100)
+LIG(0,90,5,90)
+LIG(0,50,5,50)
+LIG(35,10,40,10)
+LIG(35,20,40,20)
+LIG(35,30,40,30)
+LIG(35,40,40,40)
+LIG(35,50,40,50)
+LIG(35,60,40,60)
+LIG(35,70,40,70)
+LIG(35,80,40,80)
+LIG(5,5,5,215)
+LIG(5,5,35,5)
+LIG(35,5,35,215)
+LIG(35,215,5,215)
+VLG module regAregBAluInOut( A0,A1,A2,A3,EnableAlu,AddSub,LatchB,B0,
+VLG  B1,B2,B3,LatchA,EnableA,MainClock,invMainReset,EnableIn,
+VLG  DataIn0,DataIn1,DataIn2,DataIn3,EnableOut,IB3,IB2,IB1,
+VLG  IB0,DataOut3,DataOut2,DataOut1,DataOut0);
+VLG  input A0,A1,A2,A3,EnableAlu,AddSub,LatchB,B0;
+VLG  input B1,B2,B3,LatchA,EnableA,MainClock,invMainReset,EnableIn;
+VLG  input DataIn0,DataIn1,DataIn2,DataIn3,EnableOut;
+VLG  output IB3,IB2,IB1,IB0,DataOut3,DataOut2,DataOut1,DataOut0;
+VLG  wire w11,w12,w13,w14,w15,w16,w17,w18;
+VLG  wire w23,w40,w41,w42,w43,w44,w45,w46;
+VLG  wire w47,w48,w49,w50,w51,w52,w53,w54;
+VLG  wire w55,w56,w57,w58,w59,w60,w61,w62;
+VLG  wire w63,w64,w65,w66,w67,w68,w69,w70;
+VLG  wire w71,w72,w73,w74,w75,w76,w77,w78;
+VLG  mux #(4) mux_1_1(w42,w13,w41,AddSub);
+VLG  not #(3) inv_2_2(w41,w13);
+VLG  mux #(4) mux_3_3(w44,w11,w43,AddSub);
+VLG  mux #(4) mux_4_4(w46,w14,w45,AddSub);
+VLG  not #(3) inv_5_5(w45,w14);
+VLG  not #(3) inv_6_6(w47,w12);
+VLG  mux #(4) mux_7_7(w48,w12,w47,AddSub);
+VLG  not #(3) inv_8_8(w43,w11);
+VLG  mux #(4) mux_9_9(w49,vss,vdd,AddSub);
+VLG  bufif1 #(4) bufif1_10_10(IB3,w50,EnableAlu);
+VLG  bufif1 #(4) bufif1_11_11(IB2,w51,EnableAlu);
+VLG  bufif1 #(4) bufif1_12_12(IB1,w52,EnableAlu);
+VLG  bufif1 #(4) bufif1_13_13(IB0,w53,EnableAlu);
+VLG  xor #(5) xor2_1_14_14(w54,w15,w44);
+VLG  assign w55=(w15&w44)|(w49&(w15|w44))
+VLG  xor #(5) xor2_2_15_15(w53,w54,w49);
+VLG  xor #(5) xor2_1_16_16(w56,w16,w48);
+VLG  assign w57=(w16&w48)|(w55&(w16|w48))
+VLG  xor #(5) xor2_2_17_17(w52,w56,w55);
+VLG  xor #(5) xor2_1_18_18(w58,w17,w42);
+VLG  assign w59=(w17&w42)|(w57&(w17|w42))
+VLG  xor #(5) xor2_2_19_19(w51,w58,w57);
+VLG  xor #(5) xor2_1_20_20(w60,w18,w46);
+VLG  assign w23=(w18&w46)|(w59&(w18|w46))
+VLG  xor #(5) xor2_2_21_21(w50,w60,w59);
+VLG  nand #(8) nand2_1_22(w61,MainClock,EnableOut);
+VLG  dreg #(12) dreg_2_23(DataOut2,w63,IB2,w62,w61);
+VLG  dreg #(12) dreg_3_24(DataOut1,w64,IB1,w62,w61);
+VLG  dreg #(12) dreg_4_25(DataOut0,w65,IB0,w62,w61);
+VLG  dreg #(12) dreg_5_26(DataOut3,w66,IB3,w62,w61);
+VLG  not #(5) inv_6_27(w62,invMainReset);
+VLG  bufif1 #(4) bufif1_1_28(IB3,DataIn3,EnableIn);
+VLG  bufif1 #(4) bufif1_2_29(IB0,DataIn0,EnableIn);
+VLG  bufif1 #(4) bufif1_3_30(IB1,DataIn1,EnableIn);
+VLG  bufif1 #(4) bufif1_4_31(IB2,DataIn2,EnableIn);
+VLG  not #(5) inv_1_32(w67,invMainReset);
+VLG  dreg #(12) dreg_2_33(w15,w69,B0,w67,w68);
+VLG  dreg #(12) dreg_3_34(w18,w70,B3,w67,w68);
+VLG  dreg #(12) dreg_4_35(w17,w71,B2,w67,w68);
+VLG  dreg #(12) dreg_5_36(w16,w72,B1,w67,w68);
+VLG  and #(11) and2_6_37(w68,MainClock,LatchB);
+VLG  dreg #(12) dreg_1_38(w11,w75,A0,w73,w74);
+VLG  dreg #(12) dreg_2_39(w14,w76,A3,w73,w74);
+VLG  and #(11) and2_3_40(w74,MainClock,LatchA);
+VLG  dreg #(12) dreg_4_41(w13,w77,A2,w73,w74);
+VLG  dreg #(12) dreg_5_42(w40,w78,A1,w73,w74);
+VLG  notif1 #(4) notif1_6_43(IB0,w75,EnableA);
+VLG  notif1 #(4) notif1_7_44(IB1,w78,EnableA);
+VLG  notif1 #(4) notif1_8_45(IB3,w76,EnableA);
+VLG  notif1 #(4) notif1_9_46(IB2,w77,EnableA);
+VLG  not #(5) inv_10_47(w73,invMainReset);
+VLG endmodule
+FSYM
